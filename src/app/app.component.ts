@@ -15,9 +15,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.tipoUsuarioService.consultarTiposUsuario().subscribe(data=>{
-      console.log(data);
-    });
+    // this.tipoUsuarioService.consultarTiposUsuario().subscribe(data=>{
+    //   console.log(data);
+    // });
     
   }
 }

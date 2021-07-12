@@ -1,1 +1,10 @@
-<p>login works!</p>
+<div>
+    <form (ngSubmit)="login()" [formGroup]="form">
+        <div class="cuadrostxt">
+            <input email class="input" formControlName="usuario" type="text">
+            <input class="input" formControlName="pss" type="text">
+        </div>
+        <button>Hola</button>
+    </form>
+    
+</div>
