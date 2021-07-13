@@ -17,6 +17,6 @@ export class TipoUsuarioService {
   }
 
   public consultarTiposUsuario(): Observable<any> {
-    return this.httpClient.get(this.url);
+    return this.httpClient.get(this.url + 'consultarTipoUsuarioActivos');
   }
 }

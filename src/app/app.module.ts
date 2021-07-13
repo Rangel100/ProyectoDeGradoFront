@@ -5,19 +5,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './main/auth/login/login.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule} from '@angular/fire/auth';
+import { AuthRoutingModule } from './main/auth/auth-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AuthRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

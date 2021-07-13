@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-
   constructor(
     private formBuilder: FormBuilder,
     private authh: AngularFireAuth,
@@ -23,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       'usuario':'',
-      'pss':'',
+      'password':'',
     })
   }
 
@@ -33,11 +32,11 @@ export class LoginComponent implements OnInit {
       console.log("login");
       console.log(this.form);
 
-      this.authh.signInWithEmailAndPassword(this.form.controls.usuario.value,this.form.controls.pss.value).then(user => {
+      this.authh.signInWithEmailAndPassword(this.form.controls.usuario.value,this.form.controls.password.value).then(user => {
         console.log(user);
         this.router.navigate(['home']);
 
-    }).catch(err => console.log(err.message))
+      }).catch(err => console.log(err.message))
     }else{
 
       console.log("El formulario no es valido");

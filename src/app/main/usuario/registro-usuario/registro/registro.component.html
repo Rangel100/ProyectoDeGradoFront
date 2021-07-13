@@ -1,0 +1,16 @@
+<div>
+    <form [formGroup]="form" (ngSubmit)="crearUsuario()">
+        <div class="cuadrostxt">
+            <input class="input" formControlName="nombre" type="text">
+            <input class="input" formControlName="apellido" type="text">
+            <select formControlName="tipoUsuario">
+                <option *ngFor="let item of tipoUsuariosList" [value]="item.tiusId">
+                    {{item.nombre}}
+                </option>
+            </select>
+            <input class="input" formControlName="codigo" type="text">
+            <input class="input" formControlName="direccion" type="text">
+        </div>
+        <button>Crear</button>
+    </form>
+</div>
