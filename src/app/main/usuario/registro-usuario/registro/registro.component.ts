@@ -4,6 +4,7 @@ import { TipoUsuarioService } from '../../../../services/tipo-usuario.service';
 import { TipoUsuario } from '../../../../models/tipoUsuario';
 import { UsuarioService } from '../../../../services/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -16,12 +17,18 @@ export class RegistroComponent implements OnInit {
 
   tipoUsuariosList: TipoUsuario[];
   
+  usuaId: number;
+  usuarioConsulta: Usuario;
 
   constructor(
     private formBuilder:FormBuilder,
     private tipoUsuarioService:TipoUsuarioService,
     private usuarioService:UsuarioService,
-  ) { }
+    private activatedRoute: ActivatedRoute,
+  ) { 
+    // this.usuaId= Number.parseInt(this.activatedRoute.snapshot.queryParamMap.get("id"));
+    // this.usuaId = 1;
+  }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -32,6 +39,14 @@ export class RegistroComponent implements OnInit {
       'direccion': ['', [Validators.required]],
     });
 
+    if (this.usuaId) {
+      this.consultarUsuario();
+    } else {
+      this.getData();
+    }
+  }
+
+  getData(){
     this.getTipoUsuarios();
   }
 
@@ -67,6 +82,21 @@ export class RegistroComponent implements OnInit {
 
     }
 
+  }
+
+  consultarUsuario(){
+    this.usuarioService.consultarUsuario(this.usuaId).subscribe(d =>{
+      if (d) {
+        this.usuarioConsulta = d;
+
+        this.form.controls.nombre.setValue(this.usuarioConsulta.nombre);
+        this.form.controls.tipoUsuario.setValue(this.usuarioConsulta.tiusId_TipoUsuario);
+        this.form.controls.codigo.setValue(this.usuarioConsulta.codigo);
+        this.form.controls.direccion.setValue(this.usuarioConsulta.direccion);
+        
+        this.getData();
+      }
+    });
   }
 
 }

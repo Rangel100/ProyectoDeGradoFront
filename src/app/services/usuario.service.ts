@@ -20,4 +20,8 @@ export class UsuarioService {
   public crearUsuario(usuario: Usuario): Observable<any> {
     return this.httpClient.post(this.url + 'crearUsuario', usuario);
   }
+
+  public consultarUsuario(id: number): Observable<any> {
+    return this.httpClient.post(this.url + 'consultarUsuario', id);
+  }
 }

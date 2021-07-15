@@ -3,8 +3,8 @@
         <div class="cuadrostxt">
             <label>Nombre</label>
             <input class="input" formControlName="nombre" type="text">
-            <label>Apellido</label>
-            <input class="input" formControlName="apellido" type="text">
+            <label *ngIf="!usuaId">Apellido</label>
+            <input *ngIf="!usuaId" class="input" formControlName="apellido" type="text">
             <label>Tipo usuario</label>
             <select formControlName="tipoUsuario">
                 <option *ngFor="let item of tipoUsuariosList" [value]="item.tiusId">
