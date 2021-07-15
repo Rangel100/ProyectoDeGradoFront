@@ -6,5 +6,5 @@ export class Artefacto {
     url: string;
     tiarId_TipoArtefacto: number;
     usuaId_Usuario: number;
-
+    codigoUsuario: string;
 }

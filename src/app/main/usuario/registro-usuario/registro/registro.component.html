@@ -1,14 +1,19 @@
 <div>
     <form [formGroup]="form" (ngSubmit)="crearUsuario()">
         <div class="cuadrostxt">
+            <label>Nombre</label>
             <input class="input" formControlName="nombre" type="text">
+            <label>Apellido</label>
             <input class="input" formControlName="apellido" type="text">
+            <label>Tipo usuario</label>
             <select formControlName="tipoUsuario">
                 <option *ngFor="let item of tipoUsuariosList" [value]="item.tiusId">
                     {{item.nombre}}
                 </option>
             </select>
+            <label>Codigo</label>
             <input class="input" formControlName="codigo" type="text">
+            <label>Direccion</label>
             <input class="input" formControlName="direccion" type="text">
         </div>
         <button>Crear</button>

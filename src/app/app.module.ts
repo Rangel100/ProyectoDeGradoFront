@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule} from '@angular/fire/auth';
-import { AuthRoutingModule } from './main/auth/auth-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { AuthRoutingModule } from './main/auth/auth-routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
