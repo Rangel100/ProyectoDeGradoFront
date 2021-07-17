@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.form = this.formBuilder.group({
       'usuario':'',
       'password':'',
-    })
+    });
   }
 
   login(){
@@ -31,14 +31,13 @@ export class LoginComponent implements OnInit {
 
       console.log("login");
       console.log(this.form);
-
       this.authh.signInWithEmailAndPassword(this.form.controls.usuario.value,this.form.controls.password.value).then(user => {
         console.log(user);
         this.router.navigate(['home']);
-
-      }).catch(err => console.log(err.message))
+      }).catch(err => {
+        console.log(err.message);
+      })
     }else{
-
       console.log("El formulario no es valido");
       
     }
