@@ -20,4 +20,12 @@ export class ArtefactoService {
   public crearArtefacto(artefacto: Artefacto): Observable<any> {
     return this.httpClient.post(this.url + 'crearArtefacto', artefacto);
   }
+
+  public consultarArtefactosPorUsuario(usuaId: number): Observable<any> {
+    return this.httpClient.post(this.url + 'consultarArtefactosPorUsuario', usuaId);
+  }
+
+  public eliminarArtefacto(artefacto: Artefacto): Observable<any> {
+    return this.httpClient.post(this.url + 'eliminarArtefacto', artefacto);
+  }
 }

@@ -16,6 +16,7 @@
             <label>Direccion</label>
             <input class="input" formControlName="direccion" type="text">
         </div>
-        <button>Crear</button>
+        <button *ngIf="!usuaId">Crear</button>
     </form>
+    <button *ngIf="usuaId" type="button" (click)="editar()" >Actualizar</button>
 </div>

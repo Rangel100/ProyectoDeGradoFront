@@ -24,4 +24,12 @@ export class UsuarioService {
   public consultarUsuario(id: number): Observable<any> {
     return this.httpClient.post(this.url + 'consultarUsuario', id);
   }
+
+  public consultarUsuarios(usuario: Usuario): Observable<any> {
+    return this.httpClient.post(this.url + 'consultarUsuarios', usuario);
+  }
+
+  public actualizarUsuario(usuario: Usuario): Observable<any> {
+    return this.httpClient.post(this.url + 'actualizarUsuario', usuario);
+  }
 }

@@ -1,0 +1,24 @@
+<div class="container">
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th >Codigo</th>
+            <th >Url</th>
+            <th >Tipo Artefacto</th>
+            <th >Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listaArtefactos">
+                <td>{{item.codigo}}</td>
+                <td>{{item.url}}</td>
+                <td>{{item.nombreTipoArtefacto}}</td>
+                <td>
+                    <button (click)="desactivar(item)" >Desactivar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

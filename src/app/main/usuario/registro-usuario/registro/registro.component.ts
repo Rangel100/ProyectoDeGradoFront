@@ -4,7 +4,7 @@ import { TipoUsuarioService } from '../../../../services/tipo-usuario.service';
 import { TipoUsuario } from '../../../../models/tipoUsuario';
 import { UsuarioService } from '../../../../services/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -25,15 +25,16 @@ export class RegistroComponent implements OnInit {
     private tipoUsuarioService:TipoUsuarioService,
     private usuarioService:UsuarioService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) { 
-    // this.usuaId= Number.parseInt(this.activatedRoute.snapshot.queryParamMap.get("id"));
+    this.usuaId= Number.parseInt(this.activatedRoute.snapshot.queryParamMap.get("id"));
     // this.usuaId = 1;
   }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       'nombre': ['', [Validators.required]],
-      'apellido': ['', [Validators.required]],
+      'apellido': ['', []],
       'tipoUsuario': ['', [Validators.required]],
       'codigo': ['', [Validators.required]],
       'direccion': ['', [Validators.required]],
@@ -97,6 +98,28 @@ export class RegistroComponent implements OnInit {
         this.getData();
       }
     });
+  }
+  
+  editar(){ 
+    if (this.form.valid) {
+      let usuario: Usuario = this.usuarioConsulta;
+
+      usuario.tiusId_TipoUsuario = this.form.controls.tipoUsuario.value;
+      usuario.codigo = this.form.controls.codigo.value;
+      usuario.direccion = this.form.controls.direccion.value;
+      usuario.nombre = this.form.controls.nombre.value;
+
+      console.log(usuario);
+
+      this.usuarioService.actualizarUsuario(usuario).subscribe(d=>{
+        if (d) {
+          console.log(d);
+          
+          this.router.navigate(["usuario"]);
+        }
+      });
+
+    }
   }
 
 }
