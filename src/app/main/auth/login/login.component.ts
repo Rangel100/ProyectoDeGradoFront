@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
     console.log("Envio mensaje");
     
     // use unsafe publish for non-ssl websockets
-    this._mqttService.unsafePublish("test", "Mensaje de prueba mqtt", { qos: 1, retain: true })
+    this._mqttService.unsafePublish("testSub", "Mensaje desde aplicativo web", { qos: 1, retain: true })
     this.msg = ''
   }
 
