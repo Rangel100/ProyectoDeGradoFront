@@ -17,6 +17,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   path: '/mqtt'
 }
 
+
 @NgModule({
   declarations: [
     AppComponent,
