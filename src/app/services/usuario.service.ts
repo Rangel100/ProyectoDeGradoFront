@@ -32,4 +32,8 @@ export class UsuarioService {
   public actualizarUsuario(usuario: Usuario): Observable<any> {
     return this.httpClient.post(this.url + 'actualizarUsuario', usuario);
   }
+
+  public consultarUsuariosPorCodigo(codigo: string): Observable<any> {
+    return this.httpClient.post(this.url + 'consultarUsuariosPorCodigoOrm', codigo);
+  }
 }

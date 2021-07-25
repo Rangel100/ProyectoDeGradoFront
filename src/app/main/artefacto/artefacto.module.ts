@@ -7,6 +7,8 @@ import { RegistroComponent } from './registro-artefacto/registro/registro.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArtefactoUsuarioComponent } from './artefacto-usuario/artefacto-usuario.component';
 import { ListaArtefactoComponent } from './artefacto-usuario/lista-artefacto/lista-artefacto.component';
+import { UsuarioArtefactoComponent } from './usuario-artefacto/usuario-artefacto.component';
+import { ListaUsuarioArtefactosComponent } from './usuario-artefacto/lista-usuario-artefactos/lista-usuario-artefactos.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { ListaArtefactoComponent } from './artefacto-usuario/lista-artefacto/lis
     RegistroArtefactoComponent,
     RegistroComponent,
     ArtefactoUsuarioComponent,
-    ListaArtefactoComponent
+    ListaArtefactoComponent,
+    UsuarioArtefactoComponent,
+    ListaUsuarioArtefactosComponent
   ],
   imports: [
     CommonModule,
