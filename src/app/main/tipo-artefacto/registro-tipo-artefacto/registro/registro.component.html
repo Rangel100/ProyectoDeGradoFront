@@ -1,0 +1,12 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="crearTipoArtefacto()">
+        <div class="cuadrostxt">
+            <label>Nombre</label>
+            <input class="input" formControlName="nombre" type="text">
+            <label>Codigo</label>
+            <input class="input" formControlName="codigo" type="text">
+        </div>
+        <button *ngIf="!tiarId">Crear</button>
+    </form>
+    <button *ngIf="tiarId" type="button" (click)="editar()" >Actualizar</button>
+</div>

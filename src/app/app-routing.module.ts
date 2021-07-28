@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', loadChildren: () => import('./main/auth/auth.module').then(mod => mod.AuthModule)},
   { path: 'usuario', loadChildren: () => import('./main/usuario/usuario.module').then(mod => mod.UsuarioModule)},
   { path: 'artefacto', loadChildren: () => import('./main/artefacto/artefacto.module').then(mod => mod.ArtefactoModule)},
+  { path: 'tipo-artefacto', loadChildren: () => import('./main/tipo-artefacto/tipo-artefacto.module').then(mod => mod.TipoArtefactoModule)},
   { path: '**', redirectTo: 'login'}
 ];
 

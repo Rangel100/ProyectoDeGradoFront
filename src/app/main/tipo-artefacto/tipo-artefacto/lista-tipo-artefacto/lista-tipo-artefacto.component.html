@@ -1,0 +1,39 @@
+<div class="container">
+    <!-- <div>
+        <form [formGroup]="form" (ngSubmit)="consultarUsuarios()">
+            <div class="cuadrostxt">
+                <label>Nombre</label>
+                <input class="input" formControlName="nombre" type="text">
+               
+                <label>Codigo</label>
+                <input class="input" formControlName="codigo" type="text">
+                
+            </div>
+            <button >Consultar</button>
+            <button (click)="limpiar()" >Limpiar</button>
+        </form>
+    </div>
+    <hr> -->
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                <th >Codigo</th>
+                <th >Nombre</th>
+                <th >Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listaTipoArtefactos">
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.codigo}}</td>
+                    <td>
+                        <button (click)="editar(item)" >Editar</button>
+                        <button (click)="desactivar(item)" >Desactivar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button (click)="crearTipoArtefacto()">agregar</button>
+</div>

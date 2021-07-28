@@ -51,6 +51,20 @@ export class ListaUsuarioComponent implements OnInit {
   editar(item){
     this.router.navigate(["usuario/registro"], { queryParams: { id: item.usuaId } });
   }
+
+  desactivar(item){
+    let usuario: Usuario = new Usuario();
+
+    usuario.usuaId = item.usuaId;
+    this.usuarioService.eliminarUsuario(usuario).subscribe(d=>{
+      if (d) {
+        console.log(d);
+        this.consultarUsuarios();
+      }
+    },error =>{
+      console.log(error);
+    });
+  }
   
   crearUsuario(){
     this.router.navigate(["usuario/registro"]);
