@@ -10,7 +10,6 @@ import { ListaArtefactoComponent } from './artefacto-usuario/lista-artefacto/lis
 import { UsuarioArtefactoComponent } from './usuario-artefacto/usuario-artefacto.component';
 import { ListaUsuarioArtefactosComponent } from './usuario-artefacto/lista-usuario-artefactos/lista-usuario-artefactos.component';
 
-
 @NgModule({
   declarations: [
     RegistroArtefactoComponent,
@@ -18,7 +17,8 @@ import { ListaUsuarioArtefactosComponent } from './usuario-artefacto/lista-usuar
     ArtefactoUsuarioComponent,
     ListaArtefactoComponent,
     UsuarioArtefactoComponent,
-    ListaUsuarioArtefactosComponent
+    ListaUsuarioArtefactosComponent,
+
   ],
   imports: [
     CommonModule,

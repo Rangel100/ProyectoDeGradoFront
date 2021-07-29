@@ -55,10 +55,12 @@ export class LoginComponent implements OnInit {
           if (d) {
 
             localStorage.setItem('usuario', d.usuaId);
+            localStorage.setItem('tiusId',d.tiusId_TipoUsuario);
 
             if (d.tiusId_TipoUsuario === 1) {
               console.log('uno');
               this.router.navigate(['home']);
+              // this.router.navigate(['usuario']);
             } if (d.tiusId_TipoUsuario === 2) {
 
               console.log('dos');

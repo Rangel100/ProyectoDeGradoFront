@@ -33,14 +33,21 @@ export class ListaUsuarioArtefactosComponent implements OnInit {
         this.listaArtefactos=d;
         
       }
+    },error =>{
+      console.log(error);
     });
   }
 
   desactivar(item){
-    console.log(item);
     this.artefactoService.eliminarArtefacto(item).subscribe(d=>{
       this.getArtefactos();
+    },error =>{
+      console.log(error);
     });
+  }
+
+  editar(item){
+    this.router.navigate(['artefacto'], { queryParams: { id: item.arteId } });
   }
 
   cambiarEstado(){
@@ -52,5 +59,5 @@ export class ListaUsuarioArtefactosComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['login']);
   }
-
+  
 }

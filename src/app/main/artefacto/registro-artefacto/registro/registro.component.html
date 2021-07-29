@@ -1,19 +1,25 @@
 <div>
     <form [formGroup]="form" (ngSubmit)="crearArtefacto()">
         <div class="cuadrostxt">
+
             <label>Codigo</label>
             <input class="input" formControlName="codigo" type="text">
+
             <label>url</label>
             <input class="input" formControlName="url" type="text">
+
             <label>Tipo artefacto</label>
             <select formControlName="tipoArtefacto">
                 <option *ngFor="let item of tipoArtefactoList" [value]="item.tiarId">
                     {{item.nombre}}
                 </option>
             </select>
+
             <label>Codigo de usuario</label>
             <input class="input" formControlName="codigoUsuario" type="text">
+
         </div>
-        <button>Crear</button>
+        <button *ngIf="!arteId">Crear</button>
     </form>
+    <button *ngIf="arteId" type="button" (click)="editar()" >Actualizar</button>
 </div>
