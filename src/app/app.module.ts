@@ -13,8 +13,11 @@ import { AngularFireAuthModule} from '@angular/fire/auth';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname:'3.16.75.9',
+  // hostname: 'ec2-3-16-75-9.us-east-2.compute.amazonaws.com',
+  // hostname: '172.31.11.52',
   port: 9001,
-  path: '/mqtt'
+  path: '/mqtt',
+  protocol: 'wss'
 }
 
 

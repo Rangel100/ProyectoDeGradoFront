@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       console.log(this.form);
       this.authh.signInWithEmailAndPassword(this.form.controls.usuario.value,this.form.controls.password.value).then(user => {
         console.log(user);
-        this.router.navigate(['home']);
+        this.router.navigate(['usuario']);
       }).catch(err => {
         console.log(err.message);
       })
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
     console.log("Envio mensaje");
     
     // use unsafe publish for non-ssl websockets
-    this._mqttService.unsafePublish("testSub", "Mensaje desde aplicativo web", { qos: 1, retain: true })
+    this._mqttService.unsafePublish("test", "Mensaje desde aplicativo web", { qos: 1, retain: true })
     this.msg = ''
   }
 
