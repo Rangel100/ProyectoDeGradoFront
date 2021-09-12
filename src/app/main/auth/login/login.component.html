@@ -1,4 +1,12 @@
-        <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+<div>
+    Login
+    <form [formGroup]="form" (ngSubmit)="login()">
+        <div class="cuadrostxt">
+            <input email class="input" formControlName="usuario" type="text">
+            <input class="input" formControlName="password" type="text">
+        </div>
+        <button class="btn btn-primary">Hola</button>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>Holy guacamole!</strong> You should check in on some of those fields below.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>

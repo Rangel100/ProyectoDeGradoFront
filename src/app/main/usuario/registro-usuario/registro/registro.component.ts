@@ -76,6 +76,8 @@ export class RegistroComponent implements OnInit {
       this.usuarioService.crearUsuario(usuario).subscribe(d =>{
         if (d) {
           console.log(d);
+          
+          this.router.navigate(["usuario"]);
         }
       },error =>{
         console.log(error);
@@ -97,6 +99,8 @@ export class RegistroComponent implements OnInit {
         
         this.getData();
       }
+    },error =>{
+      console.log(error);
     });
   }
   
@@ -117,6 +121,8 @@ export class RegistroComponent implements OnInit {
           
           this.router.navigate(["usuario"]);
         }
+      },error =>{
+        console.log(error);
       });
 
     }

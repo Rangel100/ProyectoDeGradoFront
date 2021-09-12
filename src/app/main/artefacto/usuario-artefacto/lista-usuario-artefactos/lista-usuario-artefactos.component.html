@@ -1,0 +1,34 @@
+<div class="container">
+
+    <div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                <th >Codigo</th>
+                <th >Url</th>
+                <th >Tipo Artefacto</th>
+                <th >Opciones</th>
+                <th >Encendido/Apagado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listaArtefactos">
+                    <td>{{item.codigo}}</td>
+                    <td>{{item.url}}</td>
+                    <td>{{item.nombreTipoArtefacto}}</td>
+                    <td>
+                        <button (click)="desactivar(item)" >Desactivar</button>
+                        <button (click)="editar(item)" >Editar</button>
+                    </td>
+                    <td>
+                        <button (click)="cambiarEstado(item)" >Encender/Apagar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <button (click)="logOut()">Salir</button>
+    </div>
+</div>

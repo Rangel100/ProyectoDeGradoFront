@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Artefacto } from 'src/app/models/artefacto';
-import { ArtefactoService } from '../../../../services/artefacto.service';
-import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ArtefactoService } from 'src/app/services/artefacto.service';
+import { Artefacto } from '../../../../models/artefacto';
 
 @Component({
-  selector: 'app-lista-artefacto',
-  templateUrl: './lista-artefacto.component.html',
-  styleUrls: ['./lista-artefacto.component.css']
+  selector: 'app-lista-usuario-artefactos',
+  templateUrl: './lista-usuario-artefactos.component.html',
+  styleUrls: ['./lista-usuario-artefactos.component.css']
 })
-export class ListaArtefactoComponent implements OnInit {
+export class ListaUsuarioArtefactosComponent implements OnInit {
 
   usuaId: number;
 
@@ -17,11 +16,9 @@ export class ListaArtefactoComponent implements OnInit {
 
   constructor(
     private artefactoService:ArtefactoService,
-    private activatedRoute: ActivatedRoute,
     private router: Router,
   ) { 
-    this.usuaId= Number.parseInt(this.activatedRoute.snapshot.queryParamMap.get("id"));
-    // this.usuaId = 2;
+    this.usuaId = Number.parseInt(localStorage.getItem('usuario'));
   }
 
   ngOnInit(): void {
@@ -33,7 +30,6 @@ export class ListaArtefactoComponent implements OnInit {
   getArtefactos(){
     this.artefactoService.consultarArtefactosPorUsuario(this.usuaId).subscribe(d =>{
       if (d) {
-        console.log(d);
         this.listaArtefactos=d;
         
       }
@@ -51,7 +47,17 @@ export class ListaArtefactoComponent implements OnInit {
   }
 
   editar(item){
-    this.router.navigate(['artefacto'], { queryParams: { id: item.arteId, usuaId: this.usuaId }});
+    this.router.navigate(['artefacto'], { queryParams: { id: item.arteId } });
   }
 
+  cambiarEstado(){
+    console.log('cambio estado');
+    
+  }
+
+  logOut(){
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
+  
 }

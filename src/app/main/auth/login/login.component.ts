@@ -6,6 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 // import { auth } from 'firebase/app';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
     private authh: AngularFireAuth,
     private router: Router,
     private _mqttService: MqttService,
+    private usuarioService: UsuarioService,
   ) { }
 
   ngOnInit(): void {
@@ -47,8 +49,26 @@ export class LoginComponent implements OnInit {
       console.log("login");
       console.log(this.form);
       this.authh.signInWithEmailAndPassword(this.form.controls.usuario.value,this.form.controls.password.value).then(user => {
-        console.log(user);
-        this.router.navigate(['usuario']);
+        // console.log(user);
+        let codigo = user.user.email;
+        this.subscription = this.usuarioService.consultarUsuariosPorCodigo(codigo).subscribe(d=>{
+          if (d) {
+
+            localStorage.setItem('usuario', d.usuaId);
+            localStorage.setItem('tiusId',d.tiusId_TipoUsuario);
+
+            if (d.tiusId_TipoUsuario === 1) {
+              console.log('uno');
+              this.router.navigate(['home']);
+              // this.router.navigate(['usuario']);
+            } if (d.tiusId_TipoUsuario === 2) {
+
+              console.log('dos');
+              this.router.navigate(['artefacto/lista-usuario-artefacto']);
+            }
+            
+          }
+        });
       }).catch(err => {
         console.log(err.message);
       })
@@ -59,6 +79,33 @@ export class LoginComponent implements OnInit {
     // this.authh.signInWithEmailAndPassword(this.form.controls.usuario.value,this.form.controls.pss.value).then(user => {;
     // this.authh.createUserWithEmailAndPassword(this.form.controls.usuario.value,this.form.controls.pss.value).then(user => {
   }
+
+  //////////////////////////
+  loginPrueba(){
+    console.log(this.form);
+    if (this.form.valid) {
+      
+      let codigo = this.form.controls.usuario.value;
+      console.log(codigo);
+      this.subscription = this.usuarioService.consultarUsuariosPorCodigo(codigo).subscribe(d=>{
+        if (d) {
+
+          localStorage.setItem('usuario', d.usuaId);
+
+          if (d.tiusId_TipoUsuario === 1) {
+            console.log('uno');
+            this.router.navigate(['home']);
+          } if (d.tiusId_TipoUsuario === 2) {
+
+            console.log('dos');
+            this.router.navigate(['artefacto/lista-usuario-artefacto']);
+          }
+          
+        }
+      });
+    }
+  }
+  ///////////////////////
 
   subscribeNewTopic(): void {
     console.log('Me subscribo al topico')
